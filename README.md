@@ -69,8 +69,6 @@ open index.html
 python3 -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
-
 ## Deployment
 
 Deployed via Netlify, connected to this repo's `main` branch. Any push to `main`
