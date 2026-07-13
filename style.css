@@ -8,6 +8,7 @@
   --paper: #eceff3;
   --paper-alt: #ffffff;
   --line: #dde1e7;
+  --text-white: #ffffff;
   --text: #1b212b;
   --text-muted: #5b6472;
   --text-on-ink: #eceff3;
@@ -196,11 +197,11 @@ h3 {
 
 .btn-ghost {
   border-color: var(--line);
-  color: var(--text);
+  color: var(--text-white);
   background: transparent;
 }
 .btn-ghost:hover {
-  border-color: var(--text);
+  border-color: var(--text-white);
 }
 
 /* ============================================
