@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookAndBite2 — Kiki Sanni</title>
+    <meta
+      name="description"
+      content="An ASP.NET Core MVC app that pairs books with themed grocery carts." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <header class="site-nav">
+      <div class="wrap">
+        <a href="index.html" class="nav-brand">kiki<span>.</span>sanni</a>
+        <button
+          class="nav-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false">
+          &#9776;
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="projects.html">projects</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ARTICLE HERO -->
+    <section class="article-hero">
+      <div class="wrap">
+        <a href="projects.html" class="back-link">&larr; All projects</a>
+        <span class="eyebrow">Web Development</span>
+        <h1>BookAndBite2</h1>
+        <p class="lede">
+          A web app that pairs books with themed grocery carts — turning what
+          you're reading into what you're cooking.
+        </p>
+        <div class="article-meta">
+          <span>2025</span>
+          <span>·</span>
+          <span>Individual project</span>
+          <span>·</span>
+          <span>ASP.NET Core MVC</span>
+        </div>
+
+        <div class="img-frame article-cover">
+          <img
+            src="assets/img/projects/bookandbite-cover.jpg"
+            alt="BookAndBite2 cover"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
+          <div class="placeholder" style="display: none">
+            Add cover image at<br />assets/img/projects/bookandbite-cover.jpg
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article class="article-body">
+      <p class="lead">
+        Books often revolve around food — a dinner party in a novel, a bakery in
+        a memoir. BookAndBite2 takes that connection and makes it practical:
+        pick a book, and get a themed grocery cart to match its world.
+      </p>
+
+      <div class="article-stack">
+        <span class="chip">ASP.NET Core</span>
+        <span class="chip">MVC</span>
+        <span class="chip">C#</span>
+      </div>
+
+      <h2>How I built it</h2>
+      <p>
+        The app follows the standard ASP.NET Core MVC pattern — models for books
+        and grocery items, controllers to handle the pairing logic, and views to
+        display book details alongside their matched cart. I focused on keeping
+        the data model flexible enough that a book could map to multiple themed
+        carts rather than a single rigid pairing.
+      </p>
+
+      <figure class="article-figure">
+        <div class="img-frame">
+          <img
+            src="assets/img/projects/bookandbite-screens.jpg"
+            alt="BookAndBite2 app screens"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
+          <div class="placeholder" style="display: none">
+            Add app screenshots at<br />assets/img/projects/bookandbite-screens.jpg
+          </div>
+        </div>
+        <figcaption>Book detail view with its matched grocery cart</figcaption>
+      </figure>
+
+      <h2>Watch a walkthrough</h2>
+      <p>A quick tour of the app, from book selection to grocery cart.</p>
+
+      <!-- Replace VIDEO_ID with your YouTube video ID -->
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="BookAndBite2 walkthrough"
+          allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">
+        Demo walkthrough — swap in your YouTube video ID
+      </p>
+
+      <h2>Challenges &amp; what I learned</h2>
+      <p>
+        Structuring the MVC relationships cleanly took some rework once I
+        realized my first data model didn't leave room for a book to reasonably
+        connect to more than one cart theme.
+      </p>
+
+      <div class="callout">
+        <span class="eyebrow">What I learned</span>
+        <p>
+          Getting the model relationships right early saves far more time than
+          rushing into views and controllers. This project pushed me to actually
+          sketch out entity relationships before writing code, a habit I've kept
+          for projects since.
+        </p>
+      </div>
+
+      <a href="project-whatsapp-assistant.html" class="next-project">
+        <div>
+          <span class="next-project-label">Next project</span>
+          <span class="next-project-title"
+            >AI-Powered WhatsApp Finance Assistant</span
+          >
+        </div>
+        <span class="next-project-arrow">&rarr;</span>
+      </a>
+
+      <div class="article-footer-nav">
+        <a href="projects.html">&larr; Back to all projects</a>
+        <a href="https://github.com/IdayatSanni" target="_blank" rel="noopener"
+          >View on GitHub &rarr;</a
+        >
+      </div>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>&copy; 2026 Kiki Sanni. Built in Toronto.</span>
+        <div class="footer-links">
+          <a
+            href="https://linkedin.com/in/idayat-sanni"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/IdayatSanni"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Powered WhatsApp Finance Assistant — Idayat Sanni</title>
+    <meta
+      name="description"
+      content="How I built an AI-powered personal finance assistant on WhatsApp using n8n." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <header class="site-nav">
+      <div class="wrap">
+        <a href="index.html" class="nav-brand">kiki<span>.</span>sanni</a>
+        <button
+          class="nav-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false">
+          &#9776;
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="projects.html">projects</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ARTICLE HERO -->
+    <section class="article-hero">
+      <div class="wrap">
+        <a href="projects.html" class="back-link">&larr; All projects</a>
+        <span class="eyebrow">Conversational AI · Capstone</span>
+        <h1>AI-Powered WhatsApp Finance Assistant</h1>
+        <p class="lede">
+          A conversational assistant that helps people track spending and manage
+          their money right inside WhatsApp — built end-to-end with a teammate
+          as our AIGC600 capstone.
+        </p>
+        <div class="article-meta">
+          <span>2026</span>
+          <span>·</span>
+          <span>Team project</span>
+          <span>·</span>
+          <span>Capstone, AI Integration &amp; Governance</span>
+        </div>
+
+        <!-- Cover image -->
+        <div class="img-frame article-cover">
+          <img
+            src="assets/img/projects/whatsapp-cover.jpg"
+            alt="WhatsApp Finance Assistant cover"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
+          <div class="placeholder" style="display: none">
+            Add cover image at<br />assets/img/projects/whatsapp-cover.jpg
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article class="article-body">
+      <p class="lead">
+        Personal finance apps ask people to change their habits and open a new
+        app. We wanted something that met people where they already are — so we
+        built a finance assistant that lives inside WhatsApp, where you can log
+        an expense, ask about your spending, and get a nudge back in plain
+        conversation.
+      </p>
+
+      <div class="article-stack">
+        <span class="chip">n8n</span>
+        <span class="chip">WhatsApp Business API</span>
+        <span class="chip">Webhooks</span>
+        <span class="chip">Automation</span>
+      </div>
+
+      <h2>How I built it</h2>
+      <p>
+        The assistant runs on n8n as the automation and orchestration layer.
+        When a user sends a WhatsApp message, a webhook triggers a workflow that
+        parses the message, routes it to the right logic branch (logging an
+        expense, answering a spending question, or setting a reminder), and
+        sends a reply back through the WhatsApp Business API.
+      </p>
+
+      <figure class="article-figure">
+        <div class="img-frame">
+          <img
+            src="assets/img/projects/whatsapp-flow.jpg"
+            alt="n8n workflow diagram"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
+          <div class="placeholder" style="display: none">
+            Add workflow screenshot at<br />assets/img/projects/whatsapp-flow.jpg
+          </div>
+        </div>
+        <figcaption>
+          The n8n workflow that powers message routing and replies
+        </figcaption>
+      </figure>
+
+      <p>
+        I worked with a teammate to split the build: I focused on the webhook
+        setup, message-routing logic, and closing a couple of issues that came
+        up during testing — including a hardcoded API token that was sitting in
+        plain text in one of our workflow nodes, which I moved into n8n's
+        credential store, and a run of WhatsApp webhook verification errors that
+        turned out to be a mismatch between our callback URL and the verify
+        token Meta expected.
+      </p>
+
+      <h2>Watch a walkthrough</h2>
+      <p>
+        A short demo of the assistant handling a real conversation, start to
+        finish.
+      </p>
+
+      <!-- Replace VIDEO_ID with your YouTube video ID -->
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="WhatsApp Finance Assistant walkthrough"
+          allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">
+        Demo walkthrough — swap in your YouTube video ID
+      </p>
+
+      <h2>Challenges &amp; what I learned</h2>
+      <p>
+        The security issue was the one that stuck with me most. It's easy to
+        hardcode a token to get something working fast, and just as easy to
+        forget it's there. Fixing it meant going back through every node that
+        touched the API and moving credentials into n8n's built-in credential
+        manager instead — a small change that completely changed how safe the
+        workflow was to share or hand off.
+      </p>
+
+      <div class="callout">
+        <span class="eyebrow">What I learned</span>
+        <p>
+          Debugging the webhook verification errors taught me to read platform
+          documentation line by line instead of assuming I understood the
+          handshake — Meta's verification step is strict about exact string
+          matches, and the fix was smaller than the hours I spent finding it. It
+          reinforced that security and integration details deserve the same care
+          as the "interesting" logic.
+        </p>
+      </div>
+
+      <p>
+        Turning this into a Medium post afterward also pushed me to explain the
+        project clearly to people outside the course — a good test of whether I
+        actually understood what I'd built, not just that it worked.
+      </p>
+
+      <a href="project-default-risk-model.html" class="next-project">
+        <div>
+          <span class="next-project-label">Next project</span>
+          <span class="next-project-title">Payment Default Risk Model</span>
+        </div>
+        <span class="next-project-arrow">&rarr;</span>
+      </a>
+
+      <div class="article-footer-nav">
+        <a href="projects.html">&larr; Back to all projects</a>
+        <a href="https://github.com/IdayatSanni" target="_blank" rel="noopener"
+          >View on GitHub &rarr;</a
+        >
+      </div>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>&copy; 2026 Kiki Sanni. Built in Toronto.</span>
+        <div class="footer-links">
+          <a
+            href="https://linkedin.com/in/idayat-sanni"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/IdayatSanni"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retail Superstore EDA — Kiki Sanni</title>
+    <meta
+      name="description"
+      content="Exploratory data analysis on a retail Superstore sales dataset using pandas and Seaborn." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <header class="site-nav">
+      <div class="wrap">
+        <a href="index.html" class="nav-brand">kiki<span>.</span>sanni</a>
+        <button
+          class="nav-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false">
+          &#9776;
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="projects.html">projects</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ARTICLE HERO -->
+    <section class="article-hero">
+      <div class="wrap">
+        <a href="projects.html" class="back-link">&larr; All projects</a>
+        <span class="eyebrow">Data Analysis</span>
+        <h1>Retail Superstore EDA</h1>
+        <p class="lede">
+          Exploratory data analysis on a retail sales dataset, digging into what
+          actually drives revenue across categories, regions, and time.
+        </p>
+        <div class="article-meta">
+          <span>2025</span>
+          <span>·</span>
+          <span>Individual project</span>
+          <span>·</span>
+          <span>Jupyter Notebook</span>
+        </div>
+
+        <div class="img-frame article-cover">
+          <img
+            src="assets/img/projects/eda-cover.jpg"
+            alt="Retail Superstore EDA cover"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
+          <div class="placeholder" style="display: none">
+            Add cover image at<br />assets/img/projects/eda-cover.jpg
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article class="article-body">
+      <p class="lead">
+        Before building models, I wanted to get genuinely fluent in exploratory
+        data analysis — the step where you actually understand a dataset instead
+        of rushing to model it. I used a retail Superstore sales dataset to
+        practice that discipline end to end.
+      </p>
+
+      <div class="article-stack">
+        <span class="chip">Python</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">Matplotlib</span>
+        <span class="chip">Seaborn</span>
+      </div>
+
+      <h2>How I built it</h2>
+      <p>
+        Working in a Jupyter notebook, I started with the basics — checking for
+        nulls, duplicate rows, and inconsistent category labels — before moving
+        into analysis. I used pandas to group and aggregate sales by category,
+        sub-category, region, and time period, then used Matplotlib and Seaborn
+        to visualize the patterns that emerged.
+      </p>
+
+      <figure class="article-figure">
+        <div class="img-frame">
+          <img
+            src="assets/img/projects/eda-sales-by-category.jpg"
+            alt="Sales by category chart"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
+          <div class="placeholder" style="display: none">
+            Add chart screenshot at<br />assets/img/projects/eda-sales-by-category.jpg
+          </div>
+        </div>
+        <figcaption>Sales breakdown by product category</figcaption>
+      </figure>
+
+      <p>
+        A few patterns stood out: sales were concentrated in a handful of
+        sub-categories, certain regions consistently outperformed others even
+        after accounting for order volume, and there were clear seasonal spikes
+        worth flagging for anyone using this data to plan inventory or
+        promotions.
+      </p>
+
+      <h2>Watch a walkthrough</h2>
+      <p>A short walkthrough of the notebook and the key findings.</p>
+
+      <!-- Replace VIDEO_ID with your YouTube video ID -->
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="Retail Superstore EDA walkthrough"
+          allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">
+        Demo walkthrough — swap in your YouTube video ID
+      </p>
+
+      <h2>Challenges &amp; what I learned</h2>
+      <p>
+        The biggest lesson wasn't technical — it was resisting the urge to jump
+        straight to charts before understanding what each column actually meant
+        and how clean the data really was. A couple of early visualizations were
+        misleading until I traced them back to duplicate rows I hadn't caught
+        yet.
+      </p>
+
+      <div class="callout">
+        <span class="eyebrow">What I learned</span>
+        <p>
+          Good EDA is mostly disciplined skepticism: checking your own numbers
+          before trusting them, and asking whether a pattern is real or an
+          artifact of how the data was collected. That habit has carried
+          directly into how I approach every dataset since, including the ones
+          behind my ML projects.
+        </p>
+      </div>
+
+      <a href="project-bookandbite.html" class="next-project">
+        <div>
+          <span class="next-project-label">Next project</span>
+          <span class="next-project-title">BookAndBite2</span>
+        </div>
+        <span class="next-project-arrow">&rarr;</span>
+      </a>
+
+      <div class="article-footer-nav">
+        <a href="projects.html">&larr; Back to all projects</a>
+        <a href="https://github.com/IdayatSanni" target="_blank" rel="noopener"
+          >View on GitHub &rarr;</a
+        >
+      </div>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>&copy; 2026 Kiki Sanni. Built in Toronto.</span>
+        <div class="footer-links">
+          <a
+            href="https://linkedin.com/in/idayat-sanni"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/IdayatSanni"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

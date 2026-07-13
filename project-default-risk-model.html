@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Default Risk Model — Kiki Sanni</title>
+    <meta
+      name="description"
+      content="How I built a binary classification model to predict payment default risk using Azure ML AutoML." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <header class="site-nav">
+      <div class="wrap">
+        <a href="index.html" class="nav-brand">kiki<span>.</span>sanni</a>
+        <button
+          class="nav-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false">
+          &#9776;
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="projects.html">projects</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ARTICLE HERO -->
+    <section class="article-hero">
+      <div class="wrap">
+        <a href="projects.html" class="back-link">&larr; All projects</a>
+        <span class="eyebrow">Machine Learning</span>
+        <h1>Payment Default Risk Model</h1>
+        <p class="lede">
+          A binary classification model that predicts the likelihood of payment
+          default on e-commerce transactions, built with Azure ML Designer and
+          AutoML.
+        </p>
+        <div class="article-meta">
+          <span>2025</span>
+          <span>·</span>
+          <span>Individual project</span>
+          <span>·</span>
+          <span>~30,000 rows · 45 columns</span>
+        </div>
+
+        <div class="img-frame article-cover">
+          <img
+            src="assets/img/projects/risk-model-cover.jpg"
+            alt="Payment default risk model cover"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
+          <div class="placeholder" style="display: none">
+            Add cover image at<br />assets/img/projects/risk-model-cover.jpg
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article class="article-body">
+      <p class="lead">
+        Lenders and retailers lose money when they can't tell in advance which
+        customers are likely to default on payment. I built a model to predict
+        that risk from transaction and customer data — with a target of 80%
+        F1-score, balancing false positives against missed risk.
+      </p>
+
+      <div class="article-stack">
+        <span class="chip">Azure ML Designer</span>
+        <span class="chip">AutoML</span>
+        <span class="chip">Feature Engineering</span>
+        <span class="chip">Classification</span>
+      </div>
+
+      <h2>How I built it</h2>
+      <p>
+        The dataset was a German-language e-commerce dataset with roughly 45
+        columns and 30,000 rows. Before any modeling, I spent time on schema
+        review and PII handling — identifying which fields were personally
+        identifiable and making sure they were handled appropriately before
+        being fed into training.
+      </p>
+
+      <figure class="article-figure">
+        <div class="img-frame">
+          <img
+            src="assets/img/projects/risk-model-pipeline.jpg"
+            alt="Azure ML pipeline"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
+          <div class="placeholder" style="display: none">
+            Add pipeline screenshot at<br />assets/img/projects/risk-model-pipeline.jpg
+          </div>
+        </div>
+        <figcaption>
+          The Azure ML Designer pipeline used to train and evaluate the model
+        </figcaption>
+      </figure>
+
+      <p>
+        I engineered several features to give the model more signal than the raw
+        columns alone: deriving customer age from date-of-birth fields, creating
+        binary flags for specific behaviors, and building item-count features
+        from order-line data. The data was split 80/20 with stratification to
+        keep the class balance consistent across training and test sets, then
+        run through Azure's AutoML to compare model types and select the
+        strongest performer.
+      </p>
+
+      <h2>Watch a walkthrough</h2>
+      <p>
+        A walkthrough of the pipeline, feature engineering choices, and results.
+      </p>
+
+      <!-- Replace VIDEO_ID with your YouTube video ID -->
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="Payment Default Risk Model walkthrough"
+          allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">
+        Demo walkthrough — swap in your YouTube video ID
+      </p>
+
+      <h2>Challenges &amp; what I learned</h2>
+      <p>
+        Getting the feature engineering right took more iteration than the
+        modeling step itself. Binary flags and derived features that seemed
+        obviously useful sometimes barely moved the F1-score, while a few
+        simpler ones — like item count per order — turned out to carry real
+        signal.
+      </p>
+
+      <div class="callout">
+        <span class="eyebrow">What I learned</span>
+        <p>
+          This project sharpened how I think about the order of operations in a
+          real ML workflow: schema understanding and PII handling have to happen
+          before feature engineering, not after, or you end up reworking your
+          pipeline. It also reinforced that a stratified split matters — an
+          imbalanced target variable can make results look better than they are.
+        </p>
+      </div>
+
+      <a href="project-retail-eda.html" class="next-project">
+        <div>
+          <span class="next-project-label">Next project</span>
+          <span class="next-project-title">Retail Superstore EDA</span>
+        </div>
+        <span class="next-project-arrow">&rarr;</span>
+      </a>
+
+      <div class="article-footer-nav">
+        <a href="projects.html">&larr; Back to all projects</a>
+        <a href="https://github.com/IdayatSanni" target="_blank" rel="noopener"
+          >View on GitHub &rarr;</a
+        >
+      </div>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>&copy; 2026 Kiki Sanni. Built in Toronto.</span>
+        <div class="footer-links">
+          <a
+            href="https://linkedin.com/in/idayat-sanni"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/IdayatSanni"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
