@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI-Powered WhatsApp Finance Assistant — Idayat Sanni</title>
+    <title>
+      I Built an AI Finance Assistant That Lives Inside WhatsApp — Kiki Sanni
+    </title>
     <meta
       name="description"
-      content="How I built an AI-powered personal finance assistant on WhatsApp using n8n." />
+      content="How I designed and built an AI-powered personal finance assistant inside WhatsApp using n8n, OpenAI, and Google Sheets." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
@@ -37,32 +39,28 @@
       <div class="wrap">
         <a href="projects.html" class="back-link">&larr; All projects</a>
         <span class="eyebrow">Conversational AI · Capstone</span>
-        <h1>AI-Powered WhatsApp Finance Assistant</h1>
+        <h1>I Built an AI Finance Assistant That Lives Inside WhatsApp</h1>
         <p class="lede">
-          A conversational assistant that helps people track spending and manage
-          their money right inside WhatsApp — built end-to-end with a teammate
-          as our AIGC600 capstone.
+          Turning "Coffee $5.50" into a fully tracked, budgeted, and summarized
+          transaction — no app required.
         </p>
         <div class="article-meta">
           <span>2026</span>
           <span>·</span>
-          <span>Team project</span>
+          <span>Team project with Aqsa Bagwan</span>
           <span>·</span>
-          <span>Capstone, AI Integration &amp; Governance</span>
+          <span>Capstone, AI Integration &amp; Governance, Humber College</span>
         </div>
 
         <!-- Cover image -->
         <div class="img-frame article-cover">
           <img
-            src="assets/img/projects/whatsapp-cover.jpg"
+            src="assets/img/projects/workflow.png"
             alt="WhatsApp Finance Assistant cover"
             onerror="
               this.style.display = 'none';
               this.nextElementSibling.style.display = 'flex';
             " />
-          <div class="placeholder" style="display: none">
-            Add cover image at<br />assets/img/projects/whatsapp-cover.jpg
-          </div>
         </div>
       </div>
     </section>
@@ -70,64 +68,192 @@
     <!-- ARTICLE BODY -->
     <article class="article-body">
       <p class="lead">
-        Personal finance apps ask people to change their habits and open a new
-        app. We wanted something that met people where they already are — so we
-        built a finance assistant that lives inside WhatsApp, where you can log
-        an expense, ask about your spending, and get a nudge back in plain
-        conversation.
+        Most budgeting apps fail for the same reason: they ask you to open a
+        separate app and manually log every purchase. That friction is exactly
+        why so many of us start a budget tracker in January and abandon it by
+        February. So I built a finance assistant that lives inside the app
+        people already have open all day — WhatsApp. I led the n8n workflow
+        architecture, the routing logic, and the prompt engineering behind the
+        AI extraction layer; my teammate Aqsa Bagwan led the front-facing design
+        and presentation.
       </p>
 
       <div class="article-stack">
         <span class="chip">n8n</span>
+        <span class="chip">OpenAI</span>
         <span class="chip">WhatsApp Business API</span>
-        <span class="chip">Webhooks</span>
-        <span class="chip">Automation</span>
+        <span class="chip">Google Sheets</span>
       </div>
 
-      <h2>How I built it</h2>
       <p>
-        The assistant runs on n8n as the automation and orchestration layer.
-        When a user sends a WhatsApp message, a webhook triggers a workflow that
-        parses the message, routes it to the right logic branch (logging an
-        expense, answering a spending question, or setting a reminder), and
-        sends a reply back through the WhatsApp Business API.
+        Text it "Coffee 5.50." Send a photo of a receipt. Leave a voice note
+        walking out of a store. The assistant extracts the amount, categorizes
+        the spend, logs it, checks it against your budget, and texts back a
+        confirmation. No new app, no manual entry, no friction.
+      </p>
+
+      <h2>The core idea: meet people where they already are</h2>
+      <p>
+        The system supports three input types — text, voice, and image — because
+        real spending doesn't happen in one format. Sometimes you type it.
+        Sometimes you're driving and want to talk it out. Sometimes you just
+        have a receipt in hand and it's faster to snap a photo than describe it.
+        Whatever format the message arrives in, the goal is the same: turn
+        unstructured input into a clean, structured transaction record, with
+        real-time feedback and budget alerts sent straight back to WhatsApp.
+      </p>
+
+      <h2>System architecture: five layers, one flow</h2>
+      <p>I structured the workflow into five distinct layers:</p>
+      <ol>
+        <li>
+          <strong>Input Layer</strong> — a WhatsApp trigger listens for incoming
+          messages, and a Switch node routes them based on type: audio, image,
+          or text.
+        </li>
+        <li>
+          <strong>Processing Layer</strong> — each input type gets its own AI
+          pipeline. Audio is transcribed to text, images are analyzed for
+          receipt data, and text is parsed directly. All three converge into a
+          common structured format.
+        </li>
+        <li>
+          <strong>Data Layer</strong> — Google Sheets acts as the database.
+          Transactions are logged in one sheet; budgets are tracked separately
+          per month.
+        </li>
+        <li>
+          <strong>Logic Layer</strong> — Code nodes handle the math: parsing,
+          formatting, monthly totals, daily spending, and shaping the data for
+          the AI to reason about.
+        </li>
+        <li>
+          <strong>Output Layer</strong> — responses go back out through WhatsApp
+          and email: transaction confirmations, budget alerts, and weekly
+          summaries.
+        </li>
+      </ol>
+      <p>
+        A separate scheduled branch runs weekly: it pulls the week's
+        transactions, sorts and totals them, and emails a spending summary
+        automatically — so insights show up even when nobody has asked for them.
       </p>
 
       <figure class="article-figure">
         <div class="img-frame">
           <img
-            src="assets/img/projects/whatsapp-flow.jpg"
+            src="assets/img/projects/workflow1.png"
             alt="n8n workflow diagram"
             onerror="
               this.style.display = 'none';
               this.nextElementSibling.style.display = 'flex';
             " />
-          <div class="placeholder" style="display: none">
-            Add workflow screenshot at<br />assets/img/projects/whatsapp-flow.jpg
-          </div>
+          <img
+            src="assets/img/projects/workflow2.png"
+            alt="n8n workflow diagram"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'flex';
+            " />
         </div>
         <figcaption>
-          The n8n workflow that powers message routing and replies
+          The n8n workflow that powers input routing, extraction, and replies
         </figcaption>
       </figure>
 
+      <h2>Handling three input types without three separate systems</h2>
       <p>
-        I worked with a teammate to split the build: I focused on the webhook
-        setup, message-routing logic, and closing a couple of issues that came
-        up during testing — including a hardcoded API token that was sitting in
-        plain text in one of our workflow nodes, which I moved into n8n's
-        credential store, and a run of WhatsApp webhook verification errors that
-        turned out to be a mismatch between our callback URL and the verify
-        token Meta expected.
+        A Switch node checks the incoming WhatsApp message type and sends it
+        down one of three paths: audio is downloaded, transcribed, then parsed;
+        images are downloaded, uploaded to Google Drive for record-keeping, then
+        read by a vision model for receipt details; text is parsed directly.
+        Each path ends in its own parsing step, and a Merge node brings all
+        three back into a single, consistent transaction object.
+      </p>
+      <p>
+        Rather than forcing one giant prompt to handle every input type, I kept
+        the pipelines separate and let each one specialize, then merged the
+        outputs downstream. It made debugging dramatically easier — if something
+        broke, I knew immediately which pipeline to check.
       </p>
 
-      <h2>Watch a walkthrough</h2>
+      <h2>
+        The real work: prompt engineering for structured, non-hallucinated
+        output
+      </h2>
+      <p>
+        This is where most of my iteration time actually went. An AI that
+        occasionally guesses a total amount or invents a category isn't useful
+        for finance — it's actively dangerous. So I built the prompts around
+        three hard constraints:
+      </p>
+      <ol>
+        <li>
+          <strong>Strict output format</strong> — every extraction prompt
+          demands valid JSON only, with an explicit schema: date, vendor, total
+          amount, tax, currency, payment method, category (locked to a fixed
+          list), line items, description, and receipt number.
+        </li>
+        <li>
+          <strong>Explicit anti-hallucination rules</strong> — the model is told
+          not to infer missing values. If a field isn't in the receipt, it comes
+          back empty or zero, not guessed.
+        </li>
+        <li>
+          <strong>Data normalization rules</strong> — currency symbols and
+          commas are stripped ("$1,234.50" becomes 1234.50), and when multiple
+          totals appear, the prompt specifies exactly which one to extract.
+        </li>
+      </ol>
+      <p>
+        I also split the AI's job into two separate prompts rather than one
+        do-everything prompt: one for extraction (turning a receipt, voice note,
+        or text message into structured data) and one for response generation
+        (turning that data into a natural, friendly WhatsApp reply). Separating
+        those concerns meant I could tune each independently without one
+        breaking the other.
+      </p>
+
+      <pre><code>Return ONLY valid JSON. No markdown, no backticks, no explanation.
+
+{
+  "date": "string",
+  "vendor": "string",
+  "totalAmount": 0.0,
+  "taxAmount": 0.0,
+  "currency": "string",
+  "paymentMethod": "string",
+  "category": "string",   // Food, Transportation, Shopping,
+                          // Utilities, Entertainment, Other
+  "items": [ { "name": "string", "price": 0.0 } ],
+  "description": "string",
+  "receiptNumber": "string"
+}</code></pre>
+
+      <h2>Logic layer: where the AI stops and the rules start</h2>
+      <p>
+        Once a transaction is structured, the system doesn't ask the AI to do
+        math — it hands that off to deterministic code nodes. Monthly totals,
+        daily spending, and budget comparisons are calculated in JavaScript, not
+        inferred by a language model. The AI's job is extraction and
+        communication; the arithmetic and conditional logic (if spending exceeds
+        budget, trigger an alert; otherwise, send a normal response) are handled
+        by plain code.
+      </p>
+      <p>
+        That split mattered a lot. AI models are good at parsing messy,
+        unstructured human input. They are not the tool you want doing your
+        budget math. Keeping those responsibilities separate made the whole
+        system more reliable and easier to trust — a principle I'd apply to any
+        AI system that touches numbers people actually rely on.
+      </p>
+
+      <!-- <h2>Watch a walkthrough</h2>
       <p>
         A short demo of the assistant handling a real conversation, start to
         finish.
       </p>
 
-      <!-- Replace VIDEO_ID with your YouTube video ID -->
       <div class="video-embed">
         <iframe
           src="https://www.youtube.com/embed/VIDEO_ID"
@@ -136,34 +262,47 @@
       </div>
       <p class="video-caption">
         Demo walkthrough — swap in your YouTube video ID
-      </p>
+      </p> -->
 
       <h2>Challenges &amp; what I learned</h2>
       <p>
-        The security issue was the one that stuck with me most. It's easy to
-        hardcode a token to get something working fast, and just as easy to
-        forget it's there. Fixing it meant going back through every node that
-        touched the API and moving credentials into n8n's built-in credential
-        manager instead — a small change that completely changed how safe the
-        workflow was to share or hand off.
+        <strong>Multi-input handling.</strong> Routing three completely
+        different data formats into one consistent output was the biggest
+        architectural challenge. I solved it with separate pipelines per input
+        type, converging through a Merge node rather than one overloaded
+        pipeline trying to handle everything.
+      </p>
+      <p>
+        <strong>Data accuracy.</strong> Language models will confidently make
+        things up if you let them. I addressed this with strict prompt
+        constraints, a locked output schema, and validation logic downstream.
+      </p>
+      <p>
+        <strong>Integration issues.</strong> Getting WhatsApp, OpenAI, Google
+        Sheets, and Google Drive to all talk to each other cleanly inside one
+        n8n workflow took real debugging time — credential scoping, webhook
+        configuration, and response formatting all needed attention.
       </p>
 
       <div class="callout">
         <span class="eyebrow">What I learned</span>
         <p>
-          Debugging the webhook verification errors taught me to read platform
-          documentation line by line instead of assuming I understood the
-          handshake — Meta's verification step is strict about exact string
-          matches, and the fix was smaller than the hours I spent finding it. It
-          reinforced that security and integration details deserve the same care
-          as the "interesting" logic.
+          AI performs best when it's structured and constrained, not left
+          open-ended — the moment I gave the model a locked schema and explicit
+          "don't guess" rules, output quality jumped. And the moment I stopped
+          asking the AI to do arithmetic and handed that to code instead, the
+          whole system became far more trustworthy. The bigger lesson is about
+          behavior change: a finance tool only works if people actually use it,
+          and the easiest way to get people to track spending consistently is to
+          remove every point of friction between "I spent money" and "it's
+          logged."
         </p>
       </div>
 
-      <p>
-        Turning this into a Medium post afterward also pushed me to explain the
-        project clearly to people outside the course — a good test of whether I
-        actually understood what I'd built, not just that it worked.
+      <p class="attribution">
+        Built for my AI Integration &amp; Governance capstone at Humber College,
+        in collaboration with Aqsa Bagwan. Built with n8n, OpenAI, WhatsApp
+        Business API, and Google Sheets.
       </p>
 
       <a href="project-default-risk-model.html" class="next-project">

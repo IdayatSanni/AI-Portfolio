@@ -49,7 +49,7 @@ from AI-powered automation tools to machine learning models and data analysis.
     ├── js/
     │   └── script.js
     └── img/
-        ├── kiki.jpg              (profile photo)
+        ├── Idayat.jpg              (profile photo)
         └── projects/             (project cover images & screenshots)
 ```
 
