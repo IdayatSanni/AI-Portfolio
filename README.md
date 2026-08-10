@@ -2,7 +2,7 @@
 
 Personal portfolio site showcasing AI, data, and web development projects.
 
-**Live site:** [idayatsannia.netlify.app](https://idayatsannia.netlify.app)
+**Live site:** [https://idayatsanniai.netlify.app/](https://idayatsanniai.netlify.app/)
 
 ---
 
@@ -78,4 +78,4 @@ triggers a new deploy.
 
 - LinkedIn: [linkedin.com/in/idayat-sanni](https://linkedin.com/in/idayat-sanni)
 - GitHub: [github.com/IdayatSanni](https://github.com/IdayatSanni)
-- Portfolio: [idayatsannia.netlify.app](https://idayatsannia.netlify.app)
+- Portfolio: [idayatsannia.netlify.app](https://idayatsanniai.netlify.app/)
