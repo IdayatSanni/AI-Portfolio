@@ -33,24 +33,27 @@
     </header>
 
     <!-- ARTICLE HERO -->
+
     <section class="article-hero">
       <div class="wrap">
         <a href="projects.html" class="back-link">&larr; All projects</a>
         <span class="eyebrow">Machine Learning</span>
-        <h1>Payment Default Risk Model</h1>
+        <h1>E-commerce Payment Default Risk Model</h1>
         <p class="lede">
-          A binary classification model that predicts the likelihood of payment
-          default on e-commerce transactions, built with Azure ML Designer and
-          AutoML.
+          A binary classification model that predicts whether an e-commerce
+          order is high-risk (payment default), built using Python, exploratory
+          data analysis, feature engineering, preprocessing, and multiple
+          machine learning models.
         </p>
         <div class="article-meta">
-          <span>2025</span>
+          <span>2026</span>
           <span>·</span>
           <span>Individual project</span>
           <span>·</span>
-          <span>~30,000 rows · 45 columns</span>
+          <span>~30,000 rows · 44 features</span>
         </div>
 
+        ```
         <div class="img-frame article-cover">
           <img
             src="assets/img/projects/risk-model-cover.jpg"
@@ -63,39 +66,45 @@
             Add cover image at<br />assets/img/projects/risk-model-cover.jpg
           </div>
         </div>
+        ```
       </div>
     </section>
 
     <!-- ARTICLE BODY -->
+
     <article class="article-body">
       <p class="lead">
-        Lenders and retailers lose money when they can't tell in advance which
-        customers are likely to default on payment. I built a model to predict
-        that risk from transaction and customer data — with a target of 80%
-        F1-score, balancing false positives against missed risk.
+        Retailers and lenders lose money when they cannot identify which
+        customers are likely to default on payment before an order is processed.
+        I built a binary classification model to predict that risk, with a focus
+        on improving the detection of the minority class using precision,
+        recall, and F1-score rather than relying on accuracy alone.
       </p>
 
       <div class="article-stack">
-        <span class="chip">Azure ML Designer</span>
-        <span class="chip">AutoML</span>
+        <span class="chip">Python</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">Scikit-learn</span>
         <span class="chip">Feature Engineering</span>
         <span class="chip">Classification</span>
       </div>
 
       <h2>How I built it</h2>
       <p>
-        The dataset was a German-language e-commerce dataset with roughly 45
-        columns and 30,000 rows. Before any modeling, I spent time on schema
-        review and PII handling — identifying which fields were personally
-        identifiable and making sure they were handled appropriately before
-        being fed into training.
+        The dataset was a German-language e-commerce dataset containing
+        approximately 30,000 transactions and 44 features. Before modeling, I
+        performed extensive exploratory data analysis to understand feature
+        distributions, identify missing values, detect class imbalance, and
+        evaluate which variables carried predictive signal. This stage guided
+        decisions about which features to keep, engineer, or remove before
+        training any models.
       </p>
 
       <figure class="article-figure">
         <div class="img-frame">
           <img
             src="assets/img/projects/risk-model-pipeline.jpg"
-            alt="Azure ML pipeline"
+            alt="Machine learning pipeline"
             onerror="
               this.style.display = 'none';
               this.nextElementSibling.style.display = 'flex';
@@ -105,26 +114,38 @@
           </div>
         </div>
         <figcaption>
-          The Azure ML Designer pipeline used to train and evaluate the model
+          The preprocessing and modeling pipeline used to train and evaluate the
+          model
         </figcaption>
       </figure>
 
       <p>
-        I engineered several features to give the model more signal than the raw
-        columns alone: deriving customer age from date-of-birth fields, creating
-        binary flags for specific behaviors, and building item-count features
-        from order-line data. The data was split 80/20 with stratification to
-        keep the class balance consistent across training and test sets, then
-        run through Azure's AutoML to compare model types and select the
-        strongest performer.
+        I engineered several features, including customer age groups,
+        time-of-day buckets, order-hour features, and a binary
+        <code>HAS_PREVIOUS_ORDER</code> indicator derived from historical
+        purchase data. Missing values were handled strategically rather than
+        being removed, preserving information that proved highly predictive of
+        default behavior. Identifier and sparse product-code columns were
+        dropped to reduce noise and dimensionality.
+      </p>
+
+      <p>
+        The preprocessing pipeline was built using
+        <code>ColumnTransformer</code>, applying <code>OneHotEncoder</code> to
+        categorical variables and <code>StandardScaler</code> to numerical
+        features for models that require feature scaling. The dataset was split
+        using an 80/20 stratified train/test split to preserve the original
+        class distribution during model evaluation.
       </p>
 
       <h2>Watch a walkthrough</h2>
       <p>
-        A walkthrough of the pipeline, feature engineering choices, and results.
+        A walkthrough of the exploratory analysis, feature engineering
+        decisions, preprocessing pipeline, and model evaluation process.
       </p>
 
       <!-- Replace VIDEO_ID with your YouTube video ID -->
+
       <div class="video-embed">
         <iframe
           src="https://www.youtube.com/embed/VIDEO_ID"
@@ -135,23 +156,39 @@
         Demo walkthrough — swap in your YouTube video ID
       </p>
 
-      <h2>Challenges &amp; what I learned</h2>
+      <h2>Challenges & what I learned</h2>
       <p>
-        Getting the feature engineering right took more iteration than the
-        modeling step itself. Binary flags and derived features that seemed
-        obviously useful sometimes barely moved the F1-score, while a few
-        simpler ones — like item count per order — turned out to carry real
-        signal.
+        The most significant challenge was severe class imbalance: only about
+        <strong>5.8%</strong> of transactions were labeled as high-risk.
+        Baseline models achieved roughly <strong>94% accuracy</strong>, but
+        initially failed to identify many default cases. This reinforced that
+        accuracy can be misleading in imbalanced classification problems and
+        that recall and F1-score are often more meaningful business metrics.
+      </p>
+
+      <p>
+        I trained and compared <strong>Logistic Regression</strong>,
+        <strong>Decision Tree</strong>, <strong>Random Forest</strong>, and
+        <strong>Gradient Boosting</strong> models. I then applied hyperparameter
+        tuning and evaluated
+        <strong>SMOTE (Synthetic Minority Over-sampling Technique)</strong> to
+        improve minority-class detection. Hyperparameter tuning increased the
+        positive-class F1-score from <strong>0.16 to 0.25</strong> and improved
+        recall from <strong>0.18 to 0.32</strong>, while SMOTE dramatically
+        increased recall to <strong>0.69</strong> at the cost of lower precision
+        and overall accuracy.
       </p>
 
       <div class="callout">
         <span class="eyebrow">What I learned</span>
         <p>
-          This project sharpened how I think about the order of operations in a
-          real ML workflow: schema understanding and PII handling have to happen
-          before feature engineering, not after, or you end up reworking your
-          pipeline. It also reinforced that a stratified split matters — an
-          imbalanced target variable can make results look better than they are.
+          This project taught me how to build a complete machine learning
+          pipeline: exploratory data analysis, feature engineering,
+          missing-value strategy, one-hot encoding, standard scaling, model
+          comparison, hyperparameter tuning, and class-imbalance handling. The
+          biggest takeaway was that preprocessing and feature engineering often
+          have a greater impact on model performance than simply choosing a more
+          complex algorithm.
         </p>
       </div>
 
@@ -172,6 +209,7 @@
     </article>
 
     <!-- FOOTER -->
+
     <footer class="site-footer">
       <div class="wrap">
         <span>&copy; 2026 Idayat Sanni. Built in Toronto.</span>
